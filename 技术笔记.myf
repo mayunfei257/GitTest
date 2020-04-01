@@ -1,0 +1,234 @@
+【Linux】
+打包命令
+tar -cvf 文件名.tar 目录
+查看包命令
+tar -tf 文件名.tar
+解压tar.gz的文件
+tar zxvf 文件名.tar.gz
+
+查看进程的线程
+ps p 9534 -L -o pcpu,pmem,pid,tid,time,tname,cmd
+将PID为9534的堆栈信息打印到jstack.log中
+jstack -l 9534 > /home/zheren/jstack.log
+
+查看磁盘空间
+df -ah
+查看当前目录
+pwd
+
+修改文件编码格式?
+:set fileencoding=ute-8
+
+链接远程Linux服务器
+Ssh 
+
+判断字符串为空
+if [ -z $STRING ]; then
+ echo "STRING is empty"
+
+chmod u+x file.sh u代表所有者，x代表执行权限。 + 表示增加权限。
+
+curl访问http网页，可以下载文件
+查看挂载 df 目录
+
+后台启动jar文件，并输出日志
+nohup java -jar shareniu.jar >temp.txt &
+-----------------------------------------------------------------------------------------
+【远程服务相关】
+链接服务器
+ssh 账号@IP
+
+-----------------------------------------------------------------------------------------
+【GIT】
+生成SSH
+ssh-keygen -t rsa -C "xxx@meituan.com"
+设置git用户
+git config --global user.name
+设置git密码
+git config --global user.name
+
+查看远程仓库地址
+git remote -v
+查看远程仓库基本信息
+git remote show origin
+
+查看所有分支
+git branch -a
+本地创建分支
+git branch xxx
+本地删除分支
+git branch -d xxx
+查看本地分支和远程分支对应关系
+git branch -vv
+重命名本地分支
+git branch -m <oldbranch> <newbranch>
+解除当前分支和远程分支的关联
+git remote remove origin
+
+切换分支：
+git checkout xxxxx
+创建本地分支并切换过去：
+git checkout -b xxxx
+创建本地分支并切换到指定节点：
+git checkout -b xxxx <hashcode>
+拉取远程分支：
+git checkout -b xxxxx origin/feature_xxx
+查看本地修改内容
+git status
+查看提交历史
+git log
+查看某次提交的内容
+git show （hashId）
+
+拉取最新代码：
+git pull
+添加修改的文件：
+git add <filename>
+提交代码：
+git commit -m “message”
+追加提交：（没试过）
+git commit --amend
+清除本地未跟踪代码(-n是查看会删除哪些)
+git clean -f
+
+将本地分支推送到存在关系的远程分支，如不存在，则新建：
+git push origin XXXXX
+如当前分支与远程分支存在追踪关系，则本地分支和远程分支都可以省略，将当前分支推送到origin主机的对应分支：
+git push origin
+
+合并分支：分支应该是远程分支
+git merge <branch>
+比较分支区别：
+git diff <branch1> <branch2>
+
+合并提交 -- n为合并数量
+git rebase -i HEAD~n
+合并提交 从指定hashcode开始合并
+git rebase -i hashcode
+
+储藏代码
+git stash
+git stash save "message"
+查看储藏列表
+git stash list
+使用储藏并删除
+git stash pop
+
+$ git commit -m 'initial commit'
+$ git add forgotten_file
+$ git commit --amend
+上面的三条命令最终只是产生一个提交，第二个提交命令修正了第一个的提交内容。
+
+取消暂存（add）
+git reset HEAD <file>
+重置节点
+git reset --hard (hash)
+git reset --soft
+查看差异文件
+git diff --name-only <commit-1> <commit-2>
+git diff <commit-1> <commit-2> 文件名
+
+解决文件名乱码问题
+git config --global core.quotepath false
+-----------------------------------------------------------------------------------------
+【IDEA】
+修改背景色为黑或白：
+File -> Settings -> Editor -> Color Scheme ->Scheme
+鼠标放到方法上提示：
+File -> Settings -> Editor -> General -> Other -> Show quick documentation on mouse move：打勾
+修改文件换行符为unix格式:
+file -> Other Settings -> Default Settings -> Editor -> Code Style -> line separator:选unix
+项目没有依赖的jar包，只有一个jdk
+项目目录 -> mvn idea:module -> 刷新
+
+-----------------------------------------------------------------------------------------
+【数据库DB2】
+退出数据库命令：
+quit
+
+查询表索引：select * from sysibm.sysindexes where tbname='表名'；
+
+查询字段内的xml里的属性：
+select XMLCAST(
+    xmlquery(
+        '$d/com.allinfinance.cps.param.def.AuthTxnCode/templateCode'
+        PASSING XMLPARSE(DOCUMENT(param_object)) AS "d"
+    ) AS VARCHAR(100)
+)
+rom BMP.TM_PRM_OBJECT where TM_PRM_OBJECT.PARAM_CLASS like '%AuthTxnCode%'
+
+-----------------------------------------------------------------------------------------
+【FTP】
+链接ftp服务器
+ftp ip地址 回车  输入账户密码
+#上传和下载文件时应该使用正确的传输类型，FTP的传输类型分为ASCII码方式和二进制方式两种，对.txt、.htm等文件应采用ASCII码方式传输，对.exe或图片、视频、音频等文件应采用二进制方式传输。在默认情况下，FTP为ASCII码传输方式。
+ 
+type：查看当前的传输方式 
+ascii：设定传输方式为ASCII码方式 
+binary：设定传输方式为二进制方式 
+
+上传文件
+put filename [newname]
+#filename为上传的本地文件名，newname为上传至FTP服务器上时使用的名字，如果不指定newname，文件将以原名上传。
+
+下载文件
+get fileName [newFileName] 
+#filename为下载的FTP服务器上的文件名，newname为保存在本都计算机上时使用的名字，如果不指定newname，文件将以原名保存。
+
+结束退出
+quit
+-----------------------------------------------------------------------------------------
+【Excel】
+复制有个选项叫转置，可以横竖列互换；
+
+
+-----------------------------------------------------------------------------------------
+【JPA】
+persist：新建保存数据，但不能有主键，不然会报错，会根据自增生产主键
+merge：没主键的时候新建数据保存，有主键的时候，根据主键更新数据，若没有修改，则什么也不做；
+
+
+-----------------------------------------------------------------------------------------
+【JVM】
+jmc功能：
+-Dcom.sun.management.jmxremote.port=25865
+-Dcom.sun.management.jmxremote=true
+-Dcom.sun.management.jmxremote.authenticate=false
+-Dcom.sun.management.jmxremote.ssl=false
+-Djava.rmi.server.hostname=10.252.23.93
+-XX:+UnlockCommercialFeatures -XX:+FlightRecorder
+-Djava.net.preferIPv6Addresses=false
+
+其中1.6不支持-XX:+UnlockCommercialFeatures -XX:+FlightRecorder这两个参数，不支持飞行记录；
+-Djava.net.preferIPv6Addresses=false没有试过，没配；
+
+-----------------------------------------------------------------------------------------
+【Maven】
+RC01/RC02 是稳定版，只能打包一次，不然报错；
+SNAPSHOT 是快照版，可以多次打包；
+
+clean deploy -U -Dmaven.test.skip=true
+
+使用 mvn 打包，并跳过测试，然后生成文档，使用 dev 配置
+mvn clean package -Dmaven.test.skip=true javadoc:javadoc -Pdev
+使用 mvn 打包，并跳过测试
+mvn clean package -Dmaven.test.skip=true 
+
+-----------------------------------------------------------------------------------------
+【SourceTree】
+跳过登录：
+增加accounts.json和修改user.confige;
+user.confige一共增加三个属性
+
+
+-----------------------------------------------------------------------------------------
+【ZooKeeper】
+启动：apache-zookeeper-3.5.7-bin/bin/zkServer.sh start
+停止：apache-zookeeper-3.5.7-bin/bin/zkServer.sh stop
+注意：从目前的最新版本3.5.5开始，带有bin名称的包才是我们想要的下载可以直接使用的里面有编译后的二进制的包，而之前的普通的tar.gz的包里面是只是源码的包无法直接使用。
+
+
+
+-----------------------------------------------------------------------------------------
+【SpringMVC】
+入参有枚举的需要定义一个转换类，并配置；
