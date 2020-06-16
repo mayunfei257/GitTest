@@ -1,0 +1,12 @@
+
+# dubbo配置
+dubbo:
+  application:
+    name: XXXXX-provider
+  registry:
+    protocol: zookeeper
+    address: 127.0.0.1:9099
+  protocol:
+    name: dubbo
+    port: 9093
+    

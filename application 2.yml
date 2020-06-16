@@ -1,0 +1,60 @@
+apps:
+  appkey:
+    com.xxx.xxx.web.internalclient
+com:
+  xxx:
+    xxx:
+      web:
+        xxx:
+        
+# web服务端口号
+server.port: 8088
+management:
+  endpoints:
+    web:
+      base-path: /XXXXX
+      path-mapping:
+        health: /alive
+
+spring:
+  profiles:
+    active: @active-profile@
+
+#日志配置文件位置
+logging:
+  config: classpath:log4j2/log4j2-online.xml
+
+zk:
+  address:
+    127.0.0.1:9099
+
+# dubbo配置
+dubbo:
+  application:
+    name: web-consumer
+  registry:
+    protocol: zookeeper
+    address: 127.0.0.1:9099
+  consumer:
+    timeout: 30000
+    check: false
+    
+---
+
+spring:
+  profiles: local
+
+#日志配置文件位置
+logging:
+  config: classpath:log4j2/log4j2-local.xml
+  level.com.xxx.xxx.web.mapper: debug # 打印mybatis的sql日志
+
+---
+
+spring:
+  profiles: dev
+
+#日志配置文件位置
+logging:
+  config: classpath:log4j2/log4j2-offline.xml
+
