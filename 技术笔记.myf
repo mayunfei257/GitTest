@@ -1,9 +1,12 @@
 【Linux】
-打包命令
-tar -cvf 文件名.tar 目录
 查看包命令
 tar -tf 文件名.tar
-解压tar.gz的文件
+打包/解包命令
+tar -cvf 文件名.tar 目录
+tar xvf FileName.tar
+
+压缩/解压tar.gz的文件
+tar zcvf 文件名.tar.gz DirName
 tar zxvf 文件名.tar.gz
 
 查看进程的线程
@@ -33,6 +36,12 @@ curl访问http网页，可以下载文件
 
 后台启动jar文件，并输出日志
 nohup java -jar shareniu.jar >temp.txt &
+
+查看当前目录挂载点
+df ./
+详细点的，当前目录内所有挂载点
+ls -Dl
+
 -----------------------------------------------------------------------------------------
 【远程服务相关】
 链接服务器
@@ -130,6 +139,19 @@ git diff <commit-1> <commit-2> 文件名
 
 解决文件名乱码问题
 git config --global core.quotepath false
+非快速merg
+git merge --no-ff -m "说明内容" 分支名称
+修改重写上次提交的msg
+git commit --amend
+
+-----------
+初始化一个远程仓库（本地的）：
+git init --bare
+本地仓库绑定远程仓库（本地的）：
+git remote add origin ssh://zhangchu@10.2.2.142/Users/eyrh/Service.git
+绑错了，修改：
+git remote set-url origin git@github.com:yangsanning/StatusBarUtils.git
+
 -----------------------------------------------------------------------------------------
 【IDEA】
 修改背景色为黑或白：
