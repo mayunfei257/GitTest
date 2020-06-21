@@ -152,6 +152,13 @@ git remote add origin ssh://zhangchu@10.2.2.142/Users/eyrh/Service.git
 绑错了，修改：
 git remote set-url origin git@github.com:yangsanning/StatusBarUtils.git
 
+配置全局的用户名和邮箱，命令分别为
+git config --global user.name "username"
+git config --global user.email "email"
+
+查看全局的用户名和邮箱，命令分别为
+git config --global user.name
+git config --global user.email 
 -----------------------------------------------------------------------------------------
 【IDEA】
 修改背景色为黑或白：
