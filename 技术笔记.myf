@@ -149,6 +149,8 @@ git merge --no-ff -m "说明内容" 分支名称
 修改重写上次提交的msg
 git commit --amend
 
+删除远程分支
+git push origin --delete [branch_name]
 -----------
 初始化一个远程仓库（本地的）：
 git init --bare
@@ -192,6 +194,8 @@ select XMLCAST(
 rom BMP.TM_PRM_OBJECT where TM_PRM_OBJECT.PARAM_CLASS like '%AuthTxnCode%'
 
 数据库字段长度够用，但存不进去，可能字段设置了值范围；
+
+联邦数据库的nickname表存储需要二阶存储开通；
 -----------------------------------------------------------------------------------------
 【FTP】
 链接ftp服务器
