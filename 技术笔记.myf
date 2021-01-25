@@ -42,6 +42,11 @@ df ./
 详细点的，当前目录内所有挂载点
 ls -Dl
 
+变量去除所有空格；
+para=${para// /}
+
+查询文件修改时间
+stat 文件名
 -----------------------------------------------------------------------------------------
 【远程服务相关】
 链接服务器
@@ -144,6 +149,8 @@ git merge --no-ff -m "说明内容" 分支名称
 修改重写上次提交的msg
 git commit --amend
 
+删除远程分支
+git push origin --delete [branch_name]
 -----------
 初始化一个远程仓库（本地的）：
 git init --bare
@@ -186,6 +193,9 @@ select XMLCAST(
 )
 rom BMP.TM_PRM_OBJECT where TM_PRM_OBJECT.PARAM_CLASS like '%AuthTxnCode%'
 
+数据库字段长度够用，但存不进去，可能字段设置了值范围；
+
+联邦数据库的nickname表存储需要二阶存储开通；
 -----------------------------------------------------------------------------------------
 【FTP】
 链接ftp服务器
@@ -236,6 +246,7 @@ jmc功能：
 RC01/RC02 是稳定版，只能打包一次，不然报错；
 SNAPSHOT 是快照版，可以多次打包；
 
+deploy 是上传包到远程
 clean deploy -U -Dmaven.test.skip=true
 
 使用 mvn 打包，并跳过测试，然后生成文档，使用 dev 配置
