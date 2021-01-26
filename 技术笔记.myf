@@ -166,16 +166,25 @@ git config --global user.email "email"
 查看全局的用户名和邮箱，命令分别为
 git config --global user.name
 git config --global user.email 
+解决汉字转换成数字的问题
+git config --global core.quotepath false
 -----------------------------------------------------------------------------------------
 【IDEA】
-修改背景色为黑或白：
+1、修改背景色为黑或白：
 File -> Settings -> Editor -> Color Scheme ->Scheme
-鼠标放到方法上提示：
+2、鼠标放到方法上提示：
 File -> Settings -> Editor -> General -> Other -> Show quick documentation on mouse move：打勾
-修改文件换行符为unix格式:
+3、修改文件换行符为unix格式:
 file -> Other Settings -> Default Settings -> Editor -> Code Style -> line separator:选unix
-项目没有依赖的jar包，只有一个jdk
+4、项目没有依赖的jar包，只有一个jdk
 项目目录 -> mvn idea:module -> 刷新
+5、创建java类等时自动添加注释：
+Setting -> Editor -> File and Code Templates -> Files -> 选择Class或者Enum等文件模板 -> 在相应位置输入以下字符：
+/**
+* 
+* @author 马云飞
+* @data ${DATE} ${TIME}
+*/
 
 -----------------------------------------------------------------------------------------
 【数据库DB2】
